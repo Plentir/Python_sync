@@ -29,7 +29,6 @@ print(lst)
 lst.reverse()
 print(lst)
 
-
 # '#'.join(lst)
 
 print('아래는 과제 \n')
