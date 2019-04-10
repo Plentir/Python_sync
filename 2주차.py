@@ -26,7 +26,7 @@ while flag == 1:
 
     elif score < 60 and score >= 0:
         print("Your grade: F")
-
+"""
     else: # error handling = 예외처리. try에 해당하는 조건에 해당하면 except에 있는 명령들을 실행한다.
         try:
         except: "error name"
@@ -38,8 +38,9 @@ while flag == 1:
     elif ind == "y":
         flag = 1
     else:
-        
         print("Input error")
+"""
+
 # 숫자 야구 만들기
 """
 1. 랜덤(0~9 사이)으로 서로 다른 값 3개 받기.
