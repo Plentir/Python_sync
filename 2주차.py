@@ -92,7 +92,7 @@ def game():
         else:
             print("지금까지 골랐던 수: %s\n%sS, %sB.\n총 게임 횟수: %s회\n" %(storage, strikes, balls, len(storage)))
         
-        while 1:
+        while 1: #게임 반복 여부 결정
             retry = input("게임을 계속 하시겠습니까? y/n\n")
             try:
                 if retry == "n":
