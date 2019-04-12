@@ -60,14 +60,14 @@ def game():
         n = random.randint(0, 9)
         if not n in num_sol:
             num_sol.append(n)
-
+    
     storage = []
     while 1: #게임 반복
         num_input = []
         balls = 0
         strikes = 0
         
-        while len(num_input) <= 2: #임의의 수 3개 입력(중복 및 범위 밖의 수 무시, 숫자가 아닌 문자 입력 예외처리)
+        while len(num_input) <= 2: #임의의 수 3개 입력(중복 및 범위 밖의 수 무시, 숫자가 아닌 문자 입력 예외처리) - 한 번에 3개를 전부 받아야 함.
             try:
                 n2 = int(input("0~9 사이의 수 중 원하는 수를 고르세요: "))
                 if (not n2 in num_input) & (n2 >= 0) & (n2 <= 9):
@@ -105,4 +105,5 @@ def game():
 
             except ValueError:
                 print("y 또는 n으로 입력해 주세요.\n")
-game()
+if __name__ == '__main__':
+    game()
