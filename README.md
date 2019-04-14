@@ -1,2 +1,2 @@
-# Python_TUTERING
-융합전공 멘토링
+# Python
+Repository for 'Python' folder sync. between devices.
