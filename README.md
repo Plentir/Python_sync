@@ -1,2 +1,2 @@
 # Python
-Repository for 'Python' folder sync. between devices.
+Repository for 'Python' folder synchronization between devices.
