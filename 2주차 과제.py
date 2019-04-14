@@ -14,8 +14,8 @@ def game():
         strikes = 0
         
         try: #임의의 수 3개 입력(중복 및 범위 밖의 수 무시, 숫자가 아닌 문자 입력 예외처리) - 한 번에 3개를 전부 받아야 함.
-            n2 = input("0~9 사이의 수 중 원하는 수 3개를 고르세요: ")
-            if (n2 >= 0) and (n2 <= 999):
+            n2 = input("0~9 사이의 수 중 원하는 수 3개를 고르세요: ") #입력: abc 꼴로.
+            if (n2 >= 0) and (n2 <= 987):
                 num_input.append(n2)
             else:
                 print("0~9 사이의 수 3개가 아닙니다. 다시 선택하세요.")
@@ -48,4 +48,6 @@ def game():
 
             except ValueError:
                 print("y 또는 n으로 입력해 주세요.\n")
-game()
+
+if '__init__' == '__main__':
+    game()

@@ -9,31 +9,53 @@
 from random import randint
 
 def NumBB():
-    c_answer = "" # 정답(correct_answer)
-    while len(c_answer) < 3: # 정답 생성(3자리 수가 될 때까지.)
+    c_ans = ""
+    while len(c_ans) < 3: # 정답 생성(3자리 수가 될 때까지.)
         temp = str(randint(0, 9))
-        if not temp in c_answer:
-            c_answer += temp
-    
-    while 1:
-        try:
-            p_answer = str(input("""0~9 사이의 서로 다른 숫자 3개를 입력하세요.
-            입력한 숫자: """)) # 사용자 입력값(player_answer)
-            if int(p_answer) >= 0 & int(p_answer) <= 987 & p_answer != "000": # 유효성 검사(게임 규칙)
-                
+        if not temp in c_ans:
+            c_ans += temp
 
-    strk = 0
-    ball = 0
-    for i in range(0, 2 + 1): # 스트라이크/볼 확인
-        if p_answer[i] == c_answer[i]: # 스트라이크 조건
-            strk += 1
-        elif p_answer[i] in c_answer: # 볼 조건
-            ball += 1
-    
-    flag_rtry = 0
-    while flag_rtry == 0:
-        try:
-            rtry = 
+    hist_ans = []
+    flag_rtry = 1 # 게임 반복 여부. 1 = 반복, 0 = 종료
+    while flag_rtry == 1:
 
+        flag_inp = 0
+        while flag_inp == 0: # 유효한 값을 받을 때까지 반복
+            try:
+                p_ans = str(input("""0부터 9까지의 서로 다른 정수 3개를 입력하세요.
+입력한 숫자: """))
+                if int(p_ans) ==
+            except ValueError: # int("str") = ValueError 오류
+                print("숫자가 아닌 문자가 포함되어 있습니다.\n")
+                flag_inp = 0
+        hist_ans.append(int(p_ans)) # 입력값 저장
 
+        strk = 0
+        ball = 0
+        for j in range(3): # 스트라이크/볼 확인
+            if p_ans[j] == c_ans[j]: # 스트라이크 조건
+                strk += 1
+            elif p_ans[j] in c_ans: # 볼 조건
+                ball += 1
+
+        if strk == 3: # 게임 결과 출력
+            print("""%sS, %sB.
+3 strikes OUT!
+게임 횟수: %s
+게임 기록: %s\n""" %(strk, ball, len(hist_ans), hist_ans))
+        else:
+            print("""%sS, %sB.
+게임 횟수: %s
+게임 기록: %s\n""" %(strk, ball, len(hist_ans), hist_ans))
+
+        while 1: # 게임 반복 여부 확인
+            rtry = input("게임을 계속 하시겠습니까? y/n\n")
+            if rtry == "y":
+                flag_rtry = 1
+                break
+            elif rtry == "n":
+                flag_rtry = 0
+                break
+            else:
+                input("y 또는 n으로 입력해 주십시오.\n")
 NumBB()
