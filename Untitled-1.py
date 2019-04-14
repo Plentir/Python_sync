@@ -10,5 +10,5 @@ def hanoi(n, frm, to):
         step += 1
         print("%4s, %s, %s => %s" %(step, n, frm, to))
         hanoi(n-1, temp, to)
-hanoi(10, 1, 3)
-# 20182827 윤주영
+hanoi(4, 1, 3)
+# 20182827 ?��주영
