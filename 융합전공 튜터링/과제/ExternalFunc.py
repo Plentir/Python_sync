@@ -31,7 +31,7 @@ def AutoCat(path):
         
         elif "p" in file_list[i].split(".")[-1][-1]:
             for i in range(len(file_list)): # .py 파일 이름 변경(완성)
-                os.rename(file_list[i], "%s.txt" %(i, file_list[i].split(".")[0]))
+                os.rename(file_list[i], "%s.txt" %(file_list[i].split(".")[0]))
 
         elif file_list[i].split(".")[-1] == "bat":
             for i in range(len(file_list)): # .bat 파일 이름 변경(미완)
