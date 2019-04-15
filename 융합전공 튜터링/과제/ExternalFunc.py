@@ -15,6 +15,9 @@ def MkMvRn(folder, file):
     os.mkdir("c:\\%s" %folder) # 디렉터리 생성. - 1번
     os.system("move %s c:\\%s\\%s" %(file, folder, file.split("\\")[-1])) # 생성한 디렉터리로 파일 이동. - 2번
     os.startfile("c:\\%s\\%s" %(folder, file.split("\\")[-1])) # 이동한 파일을 실행. - 3번
+    for i in range(1, 6):
+        print("Work in Progress... %s sec. remain." %(6 - i))
+        time.sleep(1) # 압축 해제 완료 시까지 대기 = 5초
     return 1
 
 def AutoCat(path):
@@ -30,7 +33,7 @@ def AutoCat(path):
                 os.rename(file_list[i], "%s.txt" %i)
         
         elif "p" in file_list[i].split(".")[-1][-1]:
-            for i in range(len(file_list)): # .py 파일 이름 변경(완성)
+            for i in range(len(file_list)): # .*p 파일 이름 변경(완성)
                 os.rename(file_list[i], "%s.txt" %(file_list[i].split(".")[0]))
 
         elif file_list[i].split(".")[-1] == "bat":
@@ -40,9 +43,8 @@ def AutoCat(path):
         elif file_list[i].split(".")[-1] == "jpg":
             for i in range(len(file_list)): # .jpg 파일 이름 변경(완성)
                 os.rename(file_list[i], "%s.jpg" %chr(i + 65).lower())
-        
     return 1
     
 if __name__ == "__main__":
-    #MkMvRn("윤주영", "c:\\users\\yjy99\\desktop\\과제.zip")
+    MkMvRn("윤주영", "c:\\users\\yjy99\\desktop\\과제.zip")
     AutoCat("C:\\윤주영\\과제\\과제")
