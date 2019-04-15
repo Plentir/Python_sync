@@ -48,10 +48,10 @@ def AutoCat(path):
 
             elif i.split(".")[-1] == "bat": # .bat 파일 이름 변경(완성)
                 now = time.strftime("%Y%m%d_%Hh_%Mm_%S", time.localtime(time.time()))
-                now += str(time.time())[10:14] # 소수점 아래 3자리(ms)만 추출하려 했는데 파일 이름 충돌 일어남.
+                now += str(time.time())[10:14]
                 os.rename(i, "%ss.bat" %now)
-                time.sleep(0.001)
-
+                time.sleep(0.001) # 파일 이름 충돌 방지
+                
             elif i.split(".")[-1] == "jpg": # .jpg 파일 이름 변경(완성)
                 cnt_jpg += 1
                 os.rename(i, "%s.jpg" %chr(cnt_jpg + 64).lower())
