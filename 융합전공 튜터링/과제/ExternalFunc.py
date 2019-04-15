@@ -22,36 +22,45 @@ def MkMvRn(folder, file):
 
     except FileExistsError:
         print("Can not make directory. The folder or file already exists.")
+    except FileNotFoundError:
+        print("The file is not found. Can not go on the processes.")
     return 1
 
 def AutoCat(path):
-    files = os.listdir(path)
-    file_list = []
-    for f in files: # 파일 목록 생성(변경할 파일 목록 작성)
-        file_list.append(f)
+    try:
+        files = os.listdir(path)
+        file_list = []
+        for f in files: # 파일 목록 생성(변경할 파일 목록 작성)
+            file_list.append(f)
 
-    os.chdir(path)
-    cnt_txt = 0
-    cnt_py = 0
-    cnt_jpg = 0
-    for i in file_list: # 변경 과정 반복
-        if i.split(".")[-1] == "txt": # .txt 파일 이름 변경(완성)
-            cnt_txt += 1
-            os.rename(i, "%s.txt" %cnt_txt)
+        os.chdir(path)
+        cnt_txt = 0
+        cnt_py = 0
+        cnt_jpg = 0
+        for i in file_list: # 변경 과정 반복
+            if i.split(".")[-1] == "txt": # .txt 파일 이름 변경(완성)
+                cnt_txt += 1
+                os.rename(i, "%s.txt" %cnt_txt)
+            
+            elif i.split(".")[-1] == "py": # .py 파일 이름 변경(완성)
+                cnt_py += 1
+                os.rename(i, "%sp.txt" %cnt_py)
+
+            elif i.split(".")[-1] == "bat": # .bat 파일 이름 변경(미완)
+                now = time.strftime("%Y%m%d_%Hh_%Mm_%S", time.localtime(time.time()))
+                now += str(time.time())[10:14] # 소수점 아래 3자리(ms)만 추출하려 했는데 파일 이름 충돌 일어남.
+                os.rename(i, "%ss.bat" %now)
+                time.sleep(0.001)
+
+            elif i.split(".")[-1] == "jpg": # .jpg 파일 이름 변경(완성)
+                cnt_jpg += 1
+                os.rename(i, "%s.jpg" %chr(cnt_jpg + 64).lower())
+        print("File re-naming is successfully done.")
         
-        elif i.split(".")[-1] == "py": # .py 파일 이름 변경(완성)
-            cnt_py += 1
-            os.rename(i, "%sp.txt" %cnt_py)
-
-        elif i.split(".")[-1] == "bat": # .bat 파일 이름 변경(미완)
-            now = time.strftime("%Y%m%d_%Hh_%Mm_%S", time.localtime(time.time()))
-            now += str(time.time())[10:14] # 소수점 아래 3자리(ms)만 추출하려 했는데 파일 이름 충돌 일어남.
-            os.rename(i, "%ss.bat" %now)
-            time.sleep(0.001)
-
-        elif i.split(".")[-1] == "jpg": # .jpg 파일 이름 변경(완성)
-            cnt_jpg += 1
-            os.rename(i, "%s.jpg" %chr(cnt_jpg + 64).lower())
+    except FileExistsError:
+        print("Can not make directory. The folder or file already exists.")
+    except FileNotFoundError:
+        print("The file is not found. Can not go on the processes.")
     return 1
 
 if __name__ == "__main__":
