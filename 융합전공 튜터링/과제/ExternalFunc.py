@@ -12,39 +12,48 @@ import os
 import time
 
 def MkMvRn(folder, file):
-    os.mkdir("c:\\%s" %folder) # 디렉터리 생성. - 1번
-    os.system("move %s c:\\%s\\%s" %(file, folder, file.split("\\")[-1])) # 생성한 디렉터리로 파일 이동. - 2번
-    os.startfile("c:\\%s\\%s" %(folder, file.split("\\")[-1])) # 이동한 파일을 실행. - 3번
-    for i in range(1, 6):
-        print("Work in Progress... %s sec. remain." %(6 - i))
-        time.sleep(1) # 압축 해제 완료 시까지 대기 = 5초
+    try:
+        os.mkdir("c:\\%s" %folder) # 디렉터리 생성. - 1번
+        os.system("move %s c:\\%s\\%s" %(file, folder, file.split("\\")[-1])) # 생성한 디렉터리로 파일 이동. - 2번
+        os.startfile("c:\\%s\\%s" %(folder, file.split("\\")[-1])) # 이동한 파일을 실행. - 3번
+        for i in range(1, 6):
+            print("Work in Progress... %s seconds remain." %(6 - i))
+            time.sleep(1) # 압축 해제 완료 시까지 대기 = 5초
+
+    except FileExistsError:
+        print("Can not make directory. The folder or file already exists.")
     return 1
 
 def AutoCat(path):
     files = os.listdir(path)
     file_list = []
-    for file in files: # 파일 목록 생성
-        file_list.append(file)
+    for f in files: # 파일 목록 생성(변경할 파일 목록 작성)
+        file_list.append(f)
 
     os.chdir(path)
-    for i in range(len(file_list)):
-        if file_list[i].split(".")[-1] == "txt":
-            for i in range(len(file_list)): # .txt 파일 이름 변경(완성)
-                os.rename(file_list[i], "%s.txt" %i)
+    cnt_txt = 0
+    cnt_py = 0
+    cnt_jpg = 0
+    for i in file_list: # 변경 과정 반복
+        if i.split(".")[-1] == "txt": # .txt 파일 이름 변경(완성)
+            cnt_txt += 1
+            os.rename(i, "%s.txt" %cnt_txt)
         
-        elif "p" in file_list[i].split(".")[-1][-1]:
-            for i in range(len(file_list)): # .*p 파일 이름 변경(완성)
-                os.rename(file_list[i], "%s.txt" %(file_list[i].split(".")[0]))
+        elif i.split(".")[-1] == "py": # .py 파일 이름 변경(완성)
+            cnt_py += 1
+            os.rename(i, "%sp.txt" %cnt_py)
 
-        elif file_list[i].split(".")[-1] == "bat":
-            for i in range(len(file_list)): # .bat 파일 이름 변경(미완)
-                os.rename(file_list[i], "%s.bat" %(time.time_ns()))
+        elif i.split(".")[-1] == "bat": # .bat 파일 이름 변경(미완)
+            now = time.strftime("%Y%m%d_%Hh_%Mm_%S", time.localtime(time.time()))
+            now += str(time.time())[10:22]
+            os.rename(i, "%ss.bat" %now)
 
-        elif file_list[i].split(".")[-1] == "jpg":
-            for i in range(len(file_list)): # .jpg 파일 이름 변경(완성)
-                os.rename(file_list[i], "%s.jpg" %chr(i + 65).lower())
+        elif i.split(".")[-1] == "jpg": # .jpg 파일 이름 변경(완성)
+            cnt_jpg += 1
+            os.rename(i, "%s.jpg" %chr(cnt_jpg + 64).lower())
     return 1
-    
+
 if __name__ == "__main__":
     MkMvRn("윤주영", "c:\\users\\yjy99\\desktop\\과제.zip")
-    AutoCat("C:\\윤주영\\과제\\과제")
+    #AutoCat("C:\\윤주영\\과제\\과제") # 압축파일 이름으로 폴더 만들어서 압축 해제 옵션을 사용할 경우에 사용.
+    AutoCat("C:\\윤주영\\과제")
