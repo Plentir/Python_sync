@@ -21,7 +21,7 @@ def NumBB():
         flag_inp = 0
         while flag_inp == 0: # 유효한 값을 받을 때까지 반복
             try:
-                p_ans = input("""0부터 9까지의 서로 다른 정수 3개를 입력하세요.
+                p_ans = input("""\n0부터 9까지의 서로 다른 정수 3개를 입력하세요.
 입력한 숫자: """)
                 if int(p_ans) >= 0 and int(p_ans) <= 999 and len(p_ans) == 3: # 음수 및 자리 수 판별, ValueError 트리거.
                     for i in p_ans:
@@ -36,7 +36,7 @@ def NumBB():
             except ValueError: # 숫자가 아닌 자료형 판별
                 print("숫자가 아닌 문자가 포함되어 있습니다.\n")
                 flag_inp = 0
-        hist_ans.append(int(p_ans)) # 입력값 저장
+        #hist_ans.append(int(p_ans)) # 입력값 저장
 
         strk = 0
         ball = 0
@@ -46,29 +46,30 @@ def NumBB():
             elif p_ans[j] in c_ans: # 볼 조건
                 ball += 1
 
+        hist_ans.append((int(p_ans), "%sS" %strk, "%sB" %ball)) # 지난 게임 결과 기록
         if strk == 3: # 게임 결과 출력
-            print("""%sS, %sB.
+            print("""\n%sS, %sB.
 3 strikes OUT!
 게임 횟수: %s
-게임 기록: %s
+게임 기록: %s\n
 게임을 종료합니다.""" %(strk, ball, len(hist_ans), hist_ans))
             return 1 # 종료
         else:
-            print("""%sS, %sB.
+            print("""\n%sS, %sB.
 게임 횟수: %s
 게임 기록: %s\n""" %(strk, ball, len(hist_ans), hist_ans))
 
         while 1: # 게임 반복 여부 확인(틀린 경우.)
-            rtry = input("게임을 계속 하시겠습니까? y/n\n")
+            rtry = input("게임을 계속 하시겠습니까? (y/n)\n")
             if rtry == "n":
                 flag_rtry = 0
-                print("게임을 종료합니다.")
+                print("\n게임을 종료합니다.")
                 return 1 # 종료
             elif rtry == "y":
                 flag_rtry = 1
                 break
             else:
-                input("y 또는 n으로 입력해 주십시오.\n")
+                print("y 또는 n으로 입력해 주십시오.\n")
 
 if __name__ == "__main__":
     NumBB()
