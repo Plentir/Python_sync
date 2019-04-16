@@ -36,7 +36,6 @@ def NumBB():
             except ValueError: # 숫자가 아닌 자료형 판별
                 print("숫자가 아닌 문자가 포함되어 있습니다.\n")
                 flag_inp = 0
-        #hist_ans.append(int(p_ans)) # 입력값 저장
 
         strk = 0
         ball = 0
