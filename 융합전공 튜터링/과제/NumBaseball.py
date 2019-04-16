@@ -50,7 +50,8 @@ def NumBB():
             print("""%sS, %sB.
 3 strikes OUT!
 게임 횟수: %s
-게임 기록: %s\n""" %(strk, ball, len(hist_ans), hist_ans))
+게임 기록: %s
+게임을 종료합니다.""" %(strk, ball, len(hist_ans), hist_ans))
             return 1 # 종료
         else:
             print("""%sS, %sB.
@@ -61,6 +62,7 @@ def NumBB():
             rtry = input("게임을 계속 하시겠습니까? y/n\n")
             if rtry == "n":
                 flag_rtry = 0
+                print("게임을 종료합니다.")
                 return 1 # 종료
             elif rtry == "y":
                 flag_rtry = 1
