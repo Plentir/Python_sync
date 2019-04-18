@@ -44,7 +44,7 @@ def NumBB():
             elif p_ans[j] in c_ans: # 볼 조건
                 ball += 1
 
-        hist_ans.append((int(p_ans), "%sS" %strk, "%sB" %ball)) # 지난 게임 결과 기록
+        hist_ans.append(p_ans, "%sS" %strk, "%sB" %ball) # 지난 게임 결과 기록
         if strk == 3: # 게임 결과 출력
             print("""\n%sS, %sB.
 3 strikes OUT!
