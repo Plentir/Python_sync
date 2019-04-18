@@ -27,7 +27,10 @@ def MkMvRn(folder, file):  # 디렉터리 생성 ~ 압축 해제
         print("The file is not found. Can not go on the processes.")
 
     return AutoCat("c:\\%s\\%s" %(folder, fo_dst.split(".")[0]))
-
+"""
+def ReName(origin, dst_file, cnter):
+    os.rename(origin, "%s.%s" %(cnter,))
+"""
 def AutoCat(path):  # 파일 분류 및 이름 재설정
     try:
         files = os.listdir(path)
