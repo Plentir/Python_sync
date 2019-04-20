@@ -1,10 +1,8 @@
 # 합병 정렬
 def Mrg(trg1, trg2):  #합병 모듈
 	res = []
-	a = len(trg1)
-	b = len(trg2)
 	i = j = 0
-	while (i < a) and (j < b):
+	while (i < len(trg1)) and (j < len(trg2)):
 		if trg1[i] < trg2[j]:
 			res.append(trg1[i])
 			i += 1
