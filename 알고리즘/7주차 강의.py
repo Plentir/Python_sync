@@ -1,4 +1,3 @@
-"""
 # 버블 정렬
 def BbSort(ary):
     # a[i], a[i+1] = a[i+1], a[i] 라고 쓰면 둘의 자리가 바뀜. Packing-Unpacking
@@ -13,7 +12,7 @@ def BbSort(ary):
             return ary
     print(ary)
     return ary
-
+"""
 # 합병 정렬
 def MrgSort(ary):
     i = low = 0
@@ -58,6 +57,6 @@ def QkSort(ary, srt, end):
 """
 
 if __name__ == "__main__":
-    #BbSort([66, 22, 33, 11, 55, 44])
+    BbSort([66, 22, 33, 11, 55, 44])
     #MrgSort([2, 7, 36, 45, 15, 22, 25, 61])
-    QkSort([47, 84, 15, 23, 35, 92, 61, 17])
+    #QkSort([47, 84, 15, 23, 35, 92, 61, 17])
