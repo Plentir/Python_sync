@@ -23,7 +23,6 @@ def MrgSort(ary):
 	mid = int(len(ary)/2)
 	ary_l = MrgSort(ary[:mid])  #좌분할
 	ary_r = MrgSort(ary[mid:])  #우분할
-	print(ary_l, ary_r)
 	return Mrg(ary_l, ary_r)
 
 if __name__ == '__main__':
