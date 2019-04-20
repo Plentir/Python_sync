@@ -15,7 +15,6 @@ def Mrg(trg1, trg2):  #합병 모듈
 
 def MrgSort(ary):
 	if len(ary) <= 1:  #분할
-		print(ary)
 		return ary
 
 	mid = int(len(ary)/2)
