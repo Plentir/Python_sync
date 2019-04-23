@@ -16,8 +16,19 @@
 
 
 #피보나치 수열
-
-
+def Fibo(n):
+	seq = [0, 1]
+	if n >= 2:
+		for i in range(2, n + 1):
+			seq.append(seq[i - 1] + seq[i - 2])
+		return seq[-1]
+	elif n == 1:
+		return seq[1]
+	elif n == 0:
+		return seq[0]
+	else:
+		return "NA"
+		
 #정렬 알고리즘
 #버블 정렬
 def BubSort(ary):
@@ -55,11 +66,18 @@ def Mrg(ary1, ary2):  #정렬 후 병합 모듈
 from random import randint
 
 def QkSort(ary):
-    pvt = ary[randint(0, len(ary))]
-    for i in range(len(ary)):
-        if ary[i] < pvt:
-            ary[i]
+	pvt_pos = randint(0, len(ary) - 1)
+	ln = len(ary)
+    for i in range(ln):
+        if ary[i] > ary[pvt_pos]:
+            ary.insert(pvt_pos + 1, ary[i])
+            del ary[i]
+        else:
+            ary.insert(pvt_pos, ary[i])
+            del ary[i]
+    return ary[:ln]
 
 if __name__ == "__main__":
     #print(BubSort([0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]))
     #print(MrgSort([0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]))
+    #print(QkSort([0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]))
