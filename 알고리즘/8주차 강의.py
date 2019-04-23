@@ -1,4 +1,5 @@
 """
+알아둘 것.
 1) 프로그램 실행 시간 측정
 2) 파일 입출력
 3) 랜덤 함수 불러오기
@@ -29,35 +30,36 @@ def BubSort(ary):
 def MrgSort(ary):
     if len(ary) <= 1:  #재귀호출 종료점
         return ary
-    else:
-        mid = len(ary)//2  #분할 지점(절반으로 나누기.)
-        part_l = MrgSort(ary[:mid])  #좌분할
-        part_r = MrgSort(ary[mid:])  #우분할
-        Mrg(part_l, part_r)
-        return(ary)
+    mid = len(ary)//2  #분할 지점(절반으로 나누기.)
+    part_l = MrgSort(ary[:mid])  #좌분할
+    part_r = MrgSort(ary[mid:])  #우분할
+    return Mrg(part_l, part_r)
 
 def Mrg(ary1, ary2):  #정렬 후 병합 모듈
     res = []
     i = j = 0
-    flag = 0
     while i < len(ary1) and j < len(ary2):
         if ary1[i] > ary2[j]:
             res.append(ary2[j])
             j += 1
-            flag = 0
         else:
             res.append(ary1[i])
             i += 1
-            flag = 1
-    if flag == 0:
+    if j >= len(ary2):
         res += ary1[i:]
     else:
         res += ary2[j:]
     return res
 
 #퀵 정렬
-#def QkSort(ary):
+from random import randint
+
+def QkSort(ary):
+    pvt = ary[randint(0, len(ary))]
+    for i in range(len(ary)):
+        if ary[i] < pvt:
+            ary[i]
 
 if __name__ == "__main__":
     #print(BubSort([0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]))
-    print(MrgSort([0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]))
+    #print(MrgSort([0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]))
