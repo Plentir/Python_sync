@@ -37,6 +37,7 @@ def BubSort(ary):
             if ary[j] > ary[j + 1]:
                 ary[j], ary[j + 1] = ary[j + 1], ary[j]  #swapping
     return ary
+
 #합병 정렬
 def MrgSort(ary):
     if len(ary) <= 1:  #재귀호출 종료점
@@ -66,18 +67,29 @@ def Mrg(ary1, ary2):  #정렬 후 병합 모듈
 from random import randint
 
 def QkSort(ary):
-	pvt_pos = randint(0, len(ary) - 1)
-	ln = len(ary)
-    for i in range(ln):
-        if ary[i] > ary[pvt_pos]:
-            ary.insert(pvt_pos + 1, ary[i])
-            del ary[i]
+    if len(ary) <= 1:
+        return ary
+
+    pivot = ary[randint(0, len(ary) - 1)]
+    less = []
+    more = []
+    equal = []
+    for a in ary:
+        if a < pivot:
+            less.append(a)
+        elif a > pivot:
+            more.append(a)
         else:
-            ary.insert(pvt_pos, ary[i])
-            del ary[i]
-    return ary[:ln]
+            equal.append(a)
+    return QkSort(less) + equal + QkSort(more)
 
 if __name__ == "__main__":
-    #print(BubSort([0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]))
-    #print(MrgSort([0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]))
-    #print(QkSort([0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]))
+    a = [1, 2, 3, 4, 4, 4, 5, 6, 7, 8, 9, 10, 10, 11, 12, 13, 14, 15, 16]
+    b = [16, 15, 14, 13, 12, 11, 10, 10, 9, 8, 7, 6, 5, 4, 4, 4, 3, 2, 1]
+    c = [16, 14, 14, 12, 10, 8, 8, 8, 6, 6, 4, 2, 0, 0, 0, 0, -2, -4, -6]
+    d = [1, 10, -1, 234, 11, 10, 0, -13, 412, 22, 45, -101, -7, -7, -7, 1]
+    e = [0, 12, -1, -100, 123, 22, 2, 0, 59, 91, -1, 12]
+    print(BubSort(d))
+    print(MrgSort(d))
+    print(QkSort(d))
+    #print(QkSort(d))
