@@ -10,7 +10,9 @@
 
 
 #이진 탐색
+def BinarySrc(ary, value, pos = 0):
 
+            
 
 #하노이의 탑
 
