@@ -2,7 +2,7 @@ target = [57, 17, 27, 7, 37, 47]
 srch = int(input('Value for searching location: '))
 
 flag = 0
-for k in range(len(target)): #Annotation ¡÷ºÆ.
+for k in range(len(target)):
     if target[k] == srch:
         print('Searching result: %s' %(k + 1))
         flag = 1
