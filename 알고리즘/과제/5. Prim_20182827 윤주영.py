@@ -1,15 +1,3 @@
-# nodes = [[0, 6, 7, 99, 10, 9]]
-# class Prim:
-#     def __init__(self, Nodes):
-#         self.__ary = Nodes
-#         self.__from = 1
-#         self.__to = 1
-#         self.__dist = __ary[0][0]  # 트리에서 가장 가까운 노드 사이의 거리.
-        
-#     def prim(self, ary):
-#         while ary[-1].count(0) == len(ary[-1]):
-
-# C=[[0,6,7,99,10,9],[6,0,8,99,99,99],[7,8,0,4,5,99],[99,99,4,0,3,99],[10,99,5,3,0,11],[9,99,99,99,11,0]]
 def Prim(C):
     frm=[]
     dist=[]
