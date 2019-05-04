@@ -3,7 +3,8 @@ import os
 폴더 트리에서 2단계 이상 들어가면 해당 폴더와 그 하위 파일의 들여쓰기가 잘못됨.
 """
 def GetNameAllSubdir(dirs):  # 모든 하위 디렉터리의 목록을 텍스트 파일로 저장.
-    f = open("C:\\Users\\yjy99\\Desktop\\Name Subdirectories_All.txt", "w")
+    dir_desktop = os.environ["USERPROFILE"]
+    f = open("%s\\Desktop\\Name Subdirectories_All.txt" %dir_desktop, "w")
 
     for i in os.walk(dirs):
         name_subdir = i[0].split(dirs)[-1].split("\\")
