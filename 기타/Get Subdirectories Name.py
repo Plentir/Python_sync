@@ -1,20 +1,8 @@
 import os
-
-def GetNameSubdir(dirs):
-    name_subdirs = os.listdir(dirs)
-    
-    f = open("C:\\Users\\yjy99\\Desktop\\Subdirectories list.txt", "w")
-    
-    for line in name_subdirs:
-        f.write("%s\n" %line)
-
-    f.close()
-    print("Done.")
-
-    return 1
-
-
-def GetNameAllSubdir(dirs):
+"""
+폴더 트리에서 2단계 이상 들어가면 해당 폴더와 그 하위 파일의 들여쓰기가 잘못됨.
+"""
+def GetNameAllSubdir(dirs):  # 모든 하위 디렉터리의 목록을 텍스트 파일로 저장.
     f = open("C:\\Users\\yjy99\\Desktop\\Name Subdirectories_All.txt", "w")
 
     for i in os.walk(dirs):
@@ -49,5 +37,4 @@ def GetNameAllSubdir(dirs):
 
 
 if __name__ == "__main__":
-    # GetNameSubdir("D:\\Media\\영상\\Movies\\해외 영화")
     GetNameAllSubdir("D:\\Media\\영상\\Movies\\해외 영화")
