@@ -27,7 +27,7 @@ def GetNameAllSubdir(dirs):  # 모든 하위 디렉터리의 목록을 텍스트
             else:
                 continue
         
-        f.write("\n")  # 디렉터리 변동 후 줄 바꿈
+        f.write("\n")  # 디렉터리 변경 후 줄 바꿈
 
     f.close()
     print("The report file has been created in %s." %dir_desktop)
