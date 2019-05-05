@@ -26,6 +26,7 @@ def Prim(C):
             if (C[best][i] < dist[i]):
                 frm[i] = best
                 dist[i] = C[best][i]
+                print(frm[i], C[best][i], "앞 = frm[i], 뒤 = C[best][i]")
 
     return T
 
