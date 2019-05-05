@@ -1,6 +1,6 @@
 """
-from randint import random # 패키지 안에 있는 자기가 원하는 함수만 가져오기.
-print(randint())
+from random import randint # 패키지 안에 있는 자기가 원하는 함수만 가져오기.
+print(randint(0, 10))
 """
 #명령 프롬프트에서 복사하려면 컨트롤 시프트 c
 #유튜브 영상 다운로드 하는 법.
@@ -25,8 +25,4 @@ os.walk - 하위 디렉토리에서 파일 검색.
 <shutil은 cmd에 있는 copy와 move 명령어를 파이썬 안에서 사용할 수 있게 해줌>
 shutil.move('옮길 파일 이름.확장자', '옮길 위치/옮긴 후의 파일 이름.확장자')
 -> 옮길 위치를 ./~~/~~와 같이, '.'으로 시작하면 현재 위치 내에 있는 해당 파일 트리로 이동하여 옮김.
-"""
-"""
-import os
-os.path.splitext()
 """
