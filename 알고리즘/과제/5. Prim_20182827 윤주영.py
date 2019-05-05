@@ -18,11 +18,11 @@ def Prim(C):
                 best = j
         
         T.append([frm[best] + 1, best + 1])
-        print(best, frm[best-1])
-        print(k, T)
-        dist[best] = 0
+        print(frm[best], best)
+        print(k, T, "\n")
+        dist[best] = 0  # dist = 0 -> 이미 트리에 포함된 노드.
 
-        for i in range(1, n):
+        for i in range(1, n):  # 새로 추가된 노드(best)에서 다른 노드(i)로 가는 더 좋은 경우가 있는지 판단.
             if (C[best][i] < dist[i]):
                 frm[i] = best
                 dist[i] = C[best][i]
