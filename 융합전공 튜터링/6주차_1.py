@@ -46,16 +46,41 @@ MS Office 파일 입출력 다루는 법
 Excel >> openpyxl
 PPT >> Python-pptx
 Docx >> Python-docx
+
+Python (Anaconda 아님.)에서 모듈 설치
+cmd 상에서 아래 명령어 입력
+>>python -m pip install [모듈 이름] = 설치
+>>python -m pip install --upgrade [모듈 이름] = 업데이트
+주의: python을 cmd 상에서 실행시킨 상태로 진행하지 않고 그냥 cmd를 켜자마자 입력해야 함.
 """
-from openpyxl import Workbook
-wb = Workbook()
-ws = wb.active()
-ws["A1"] = "Hello"
-wb.save("text.xlsx")
-wb.remove_sheet("text.xlsx", "윤주영")
-ws.title = "New"
+def MakeEXL():
+    from openpyxl import Workbook
+
+    wb = Workbook()
+    ws = wb.active
+    ws["A1"] = "Hello"
+    wb.save("text.xlsx")
+    wb.remove(ws)
+
+
+def MakePPT():
+    from pptx import Presentation
+
+    prs = Presentation()
+
+    ts = prs.slide_layouts[0]
+    s1 = prs.slides.add_slide(ts)
+    title = s1.shapes.title
+    st = s1.placeholders[1]
+    title.text = "Hello, Python!"
+    st.text = "Hello, Python-pptx!"
+
+    prs.save("test.pptx")
+
 
 if __name__ == "__main__":
     # makeinfo()
     # changename()
+    MakeEXL()
+    MakePPT()
     pass
