@@ -1,5 +1,4 @@
 # 알고리즘
-
 def Kruskal(array_weights, array_sections):
     tot_weights = []
     flag = 1
@@ -8,9 +7,9 @@ def Kruskal(array_weights, array_sections):
         _from = _to = 0  # 초기화
         _min = 999
 
-        for i in range(len(array_weights)):  # 가중치가 가장 작은 연결을 검색. i는 연결이 시작되는 노드의 번호(index).
+        for i in range(len(array_weights)):  # 가중치가 가장 작은 연결을 검색. i는 연결이 시작되는 노드의 인덱스(index).
 
-            for j in range(len(array_weights[i])):  # j는 i와 연결될 노드의 번호(index).
+            for j in range(len(array_weights[i])):  # j는 i와 연결될 노드의 인덱스(index).
                 if array_weights[i][j] < _min and array_weights[i][j] != -1:
                     _min = array_weights[i][j]
                     _from, _to = i, j
@@ -32,20 +31,19 @@ def Kruskal(array_weights, array_sections):
             print("Connection established: Node %s <=> Node %s" %(_from + 1, _to + 1))
 
         else:  # 섹션 내에 loop가 발생할 경우.
-            array_weights[_from][_to] = array_weights[_to][_from] = 999  # 고려하지 않을 경로.
+            array_weights[_from][_to] = array_weights[_to][_from] = 999  # 고려하지 않을 경로에 추가.
 
         if len(set(array_sections)) == 1:  # 모든 노드가 하나의 섹션으로 통합되었는지 확인함.
             flag = 0
 
-    print("Total weights:", sum(tot_weights[n][-1] for n in range(len(tot_weights))))
+    print("Total weights:", sum(tot_weights[n][-1] for n in range(len(tot_weights))))  # 가중치 합계 출력.
 
     return tot_weights
 
 
 # 이하는 실행 코드
 if __name__ == "__main__":
-    
-    # (6, 9)
+    # (6 nodes, 9 lines)
     weights1 = [[-1, 6, 7, 999, 10, 9],  # Node 1
                [6, -1, 999, 999, 999, 999],  # Node 2
                [7, 8, -1, 4, 5, 999],  # Node 3
@@ -55,7 +53,8 @@ if __name__ == "__main__":
 
     sections1 = [1, 2, 3, 4, 5, 6]
 
-    # (8, 12)
+    # 테스트 값은 다음 사이트에서 인용함. http://weierstrass.is.tokushima-u.ac.jp/ikeda/suuri/kruskal/Kruskal.shtml
+    # (8 nodes, 12 lines)
     weights2 = [[-1, 3, 6, 999, 999, 999, 999, 1], # Node 1
                [3, -1, 2, 999, 999, 999, 999, 2], # Node 2
                [6, 2, -1, 1, 999, 999, 999, 999], # Node 3
@@ -67,7 +66,7 @@ if __name__ == "__main__":
 
     sections2 = [1, 2, 3, 4, 5, 6, 7, 8]
 
-    # (5, 8)
+    # (5 nodes, 8 lines)
     weights3 = [[-1, 4, 4, 3, 6], # Node 1
                 [4, -1, 3, 999, 7], # Node 2
                 [4, 3, -1, 2, 999], # Node 3
