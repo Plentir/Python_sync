@@ -1,125 +1,127 @@
 class AutoProcessing:
     
     def __init__(self, line):
-        self.__temp = line.split()
-
-        self.__name = self.__temp[0]
-        self.__tel = self.__temp[1]
-        self.__id = self.__temp[2]
-        self.__mail = self.__temp[-1]
-
-
-    def seedata(self):
-        print("Raw data:", self.__temp)
-        print("Name:", self.__name)
-        print("Tel.:", self.__tel)
-        print("ID:", self.__id)
-        print("E-mail:", self.__mail)
-
-
-    def sex(self):
-        if self.__id.split("-")[-1][0] in ["9", "1", "3", "5", "7"]:
+        self.__name = line.split()[0]
+        self.__tel = line.split()[1]
+        self.__id = line.split()[2]
+        self.__mail = line.split()[-1]
+        
+        if self.__id.split("-")[-1][0] in ("9", "1", "3", "5", "7"):
             self.__sex = "Male"
 
         else:
             self.__sex = "Female"
 
+    def seedata(self):
+        print("Name:", self.__name)
+        print("Tel.:", self.__tel)
+        print("ID:", self.__id)
+        print("E-mail:", self.__mail)
         print("Sex:", self.__sex)
 
 
-def count(dir, key = "sex"):
-		
-	if key == "sex":
-		n_male = n_female = 0
-		
-		data = processor(index = -2, splitter = "-", target = -1, end = 0)
-		
-		result = []
-		
-		for i in data:
-			if i in ("9", "1", "3", "5", "7"):
-				pcr_data.append("Male")
-			
-			
-			else:
-				prc_data.append("Female")
-		
-		return result
-				
-		"""
-		for i in files:
-			f = open(os.environ["USERPROFILE"] + "/desktop/과제2/" + i, "r")
-			
-			raw_data = f.readline().split()
-			
-			if raw_data[2].split("-")[0] in [1, 3, 5, 7, 9]:
-				n_male += 1
-			
-			else:
-				n_female += 1
-				
-			f.close()
-		"""		
-	
-	elif key == "portals":
-		portals = processor(index = -1, splitter = "@", target = -1)
-		
-		_min = _max = 0
-		user_num = {}
-		
-		for p in set(portals):
-			print(portals.count(p))
-			
-			if 
-			user_num[p] = portals.count(p)
-		
-		temp = user_num.items()
-		
-			
-			
-		return user_num
-				
-	elif key == "ages":
-		ages = processor(index = -2, splitter = "-", target = 0, end = 1)
-	
-	
-	else:
-		print("잘못된 인수를 입력했습니다.")
-		
+def processor(index, splitter = None, target = None, start = 0, end = None):
+    import os
+    
+    prc_data = []
+        
+    files = os.listdir(os.environ["USERPROFILE"] + "/desktop/과제2/")
+    
+    if target is None:
+        for i in files:
+            f = open(os.environ["USERPROFILE"] + "/desktop/과제2/" + i, "r")
+            
+            raw_data = f.readline().split()
+            
+            prc_data.append(raw_data[index].split(splitter)[start : end])
+            
+            f.close()
+    
+    else:
+        for i in files:
+            f = open(os.environ["USERPROFILE"] + "/desktop/과제2/" + i, "r")
+            
+            raw_data = f.readline().split()
+            
+            prc_data.append(raw_data[index].split(splitter)[target][start : end])
+            
+            f.close()
+    
+    return prc_data
 
-def processor(index, splitter = "", target = None, start = 0, end = -1):
-	import os
-	
-	prc_data = []
-		
-	files = os.listdir(dir)
-	
-	if target is None:
-		for i in files:
-			f = open(os.environ["USERPROFILE"] + "/desktop/과제2/" + i, "r")
-			
-			raw_data = f.readline().split()
-			
-			prc_data.append(raw_data[index].split(splitter)[start : end])
-			
-			f.close()
-	
-	else:
-		for i in files:
-			f = open(os.environ["USERPROFILE"] + "/desktop/과제2/" + i, "r")
-			
-			raw_data = f.readline().split()
-			
-			prc_data.append(raw_data[index].split(splitter)[target][start : end])
-			
-			f.close()
-	
-	return prc_data
+
+def count(key = None):
+
+    if key == "sex":  # 남자/여자 인원 수 세기
+        n_male = n_female = 0
+        
+        data = processor(index = -2, splitter = "-", target = -1, end = 1)
+        
+        for i in data:
+            if i in ("9", "1", "3", "5", "7"):
+                n_male += 1
+            
+            else:
+                n_female += 1
+        
+        print("Male:", n_male)
+        print("Female:", n_female)
+        
+        return (n_male, n_female)
+                    
+
+    elif key == "portals":  # 가장 많이/적게 쓰는 포탈 찾기
+        portals = processor(index = -1, splitter = "@", target = -1)
+
+        user_num = {}
+
+        for p in set(portals):
+            user_num[p] = portals.count(p)
+
+        temp = tuple(user_num.items())
+
+        _mx = max(temp[n][-1] for n in range(len(temp)))
+        _mn = min(temp[n][-1] for n in range(len(temp)))
+
+        for n in range(len(temp)):
+            
+            if _mx is temp[n][-1]:
+                most_used = temp[n][0]
+
+            elif _mn is temp[n][-1]:
+                least_used = temp[n][0]
+
+        print("Most used portals: %s (%s)" %(most_used, _mx))
+        print("Least used portals: %s (%s)" %(least_used, _mn))
+
+        return user_num
+                
+        
+    elif key == "ages":  # 가장 늙은/어린 사람의 나이 찾기
+        raw_ages = processor(index = -2, splitter = "-", target = 0, end = 2)
+        ages = []
+        
+        for n in range(len(raw_ages)):
+            
+            if int(raw_ages[n]) <= 19 and int(raw_ages[n]) >= 0:
+                ages.append(19 - int(raw_ages[n]) + 1)
+                
+            else:
+                ages.append(119 - int(raw_ages[n]) + 1)
+
+        print("Youngest person: %s years old" %max(ages))
+        print("Oldest person: %s years old" %min(ages))
+        
+        return (max(ages), min(ages))
+
+    else:
+        print("잘못된 인수를 입력했습니다.")
+        
+        return 1
 
 
 if __name__ == "__main__":
-    test = AutoProcessing("윤승민	010-2039-3139	121203-1497872	AY4312@hanmail.net")
-
-    test.seedata()
-
-    test.sex()
+    count("sex")
+    count("portals")
+    count("ages")
+    
