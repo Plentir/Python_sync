@@ -27,14 +27,26 @@ class AutoProcessing:
         print("Sex:", self.__sex)
 
 
-def count(self, dir, key = "sex"):
-	import os
-	
-	files = os.listdir(dir)
-	
+def count(dir, key = "sex"):
+		
 	if key == "sex":
-		self.n_male = self.n_female = 0
-
+		n_male = n_female = 0
+		
+		data = processor(index = -2, splitter = "-", target = -1, end = 0)
+		
+		result = []
+		
+		for i in data:
+			if i in ("9", "1", "3", "5", "7"):
+				pcr_data.append("Male")
+			
+			
+			else:
+				prc_data.append("Female")
+		
+		return result
+				
+		"""
 		for i in files:
 			f = open(os.environ["USERPROFILE"] + "/desktop/과제2/" + i, "r")
 			
@@ -47,25 +59,62 @@ def count(self, dir, key = "sex"):
 				n_female += 1
 				
 			f.close()
-				
+		"""		
 	
 	elif key == "portals":
-		portals = []
+		portals = processor(index = -1, splitter = "@", target = -1)
 		
+		_min = _max = 0
+		user_num = {}
+		
+		for p in set(portals):
+			print(portals.count(p))
+			
+			if 
+			user_num[p] = portals.count(p)
+		
+		temp = user_num.items()
+		
+			
+			
+		return user_num
+				
+	elif key == "ages":
+		ages = processor(index = -2, splitter = "-", target = 0, end = 1)
+	
+	
+	else:
+		print("잘못된 인수를 입력했습니다.")
+		
+
+def processor(index, splitter = "", target = None, start = 0, end = -1):
+	import os
+	
+	prc_data = []
+		
+	files = os.listdir(dir)
+	
+	if target is None:
 		for i in files:
 			f = open(os.environ["USERPROFILE"] + "/desktop/과제2/" + i, "r")
 			
 			raw_data = f.readline().split()
 			
-			portals.append(raw_data[-1].split("@")[-1])
+			prc_data.append(raw_data[index].split(splitter)[start : end])
 			
-		for p in set(portals):
-			print(portals.count(p))
-			
+			f.close()
 	
 	else:
-		print("올바르지 않은 인수.")
-
+		for i in files:
+			f = open(os.environ["USERPROFILE"] + "/desktop/과제2/" + i, "r")
+			
+			raw_data = f.readline().split()
+			
+			prc_data.append(raw_data[index].split(splitter)[target][start : end])
+			
+			f.close()
+	
+	return prc_data
 
 
 if __name__ == "__main__":
