@@ -18,9 +18,9 @@ driver.get(url)  # URL 호출
 
 
 id = "20182827"
-driver.find_element_by_name("j_username").send_keys(id)
-
 pw = "yjy990810?"
+
+driver.find_element_by_name("j_username").send_keys(id)
 driver.find_element_by_name("j_password").send_keys(pw)
 
 driver.find_element_by_xpath("//*[@id='container']/div[1]/div[1]/div/div[1]/table/tbody/tr[1]/td[3]").click()  # 로그인 버튼 클릭
