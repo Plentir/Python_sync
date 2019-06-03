@@ -1,7 +1,14 @@
-print("hello", ",", "world!", sep = "__" , end = " " )
-# sep: 각 요소 사이에 들어갈 문자(구분자), end: 출력할 내용의 끝에 붙을 내용
-print("HELLO, WORLD!")
-print("Last line")
-import os
+def print_array(array):
+    for i in range(len(array)):
+        print("%2s" %("  ".join(array[i])))
 
-print(os.environ)
+    return
+
+
+if __name__ == "__main__":
+    array = [
+        [1, 2, 3, 4, 5, 6],
+        [7, 8, 9, 0, 9, 8],
+        [7, 6, 5, 4, 3, 2]]
+    
+    print_array(array)
