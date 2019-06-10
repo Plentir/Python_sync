@@ -94,7 +94,7 @@ if __name__ == "__main__":  # 최단경로 탐색 및 출력까지 모두 포함
             elif P[i][j] != 0:
                 print("%s => %s : %s , " %(i + 1, j + 1, i + 1), end = "")
                 path_finder(i, j, P)
-                print(j + 1, "")
+                print(j + 1)
 
             elif P[i][j] == 0:
                 print("%s => %s : %s , %s" %(i + 1, j + 1, i + 1, j + 1))
