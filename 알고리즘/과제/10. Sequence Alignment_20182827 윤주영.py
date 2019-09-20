@@ -111,8 +111,8 @@ def alignseq(array, seq_ref, seq_target):
 
 
 if __name__ == "__main__":
-    seq_ref = "ABCNYRQCLCRPM"  # col
-    seq_target = "AYCYNRCKCRBP"  # row
+    seq_ref = "ABCNYRQCLCRPMPPCYCY"  # col
+    seq_target = "AYCYNRCKCRBPMPCYCY"  # row
 
     ary = summatrix(seq_ref, seq_target)
 
