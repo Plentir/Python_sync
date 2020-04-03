@@ -36,6 +36,5 @@ def GetNameAllSubdir(dirs):  # 모든 하위 디렉터리의 목록을 텍스트
 
 
 if __name__ == "__main__":
-    # trg = input("파일 목록을 작성할 디렉터리를 입력하세요.\n입력: ")
-    trg = "D:\\Media\\영상"
+    trg = input("파일 목록을 작성할 디렉터리를 입력하세요.\n입력: ")
     GetNameAllSubdir(trg)
