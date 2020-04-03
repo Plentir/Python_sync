@@ -2,7 +2,7 @@ import os
 
 def GetNameAllSubdir(dirs):  # 모든 하위 디렉터리의 목록을 텍스트 파일로 저장.
     dir_desktop = os.environ["USERPROFILE"] + "\\Desktop"
-    f = open("%s\\Subdirectories' Name_All.txt" %dir_desktop, "w")
+    f = open("%s\\Subdirectories' Name_All.txt" %dir_desktop, "w", encoding="utf-8")
 
     for i in os.walk(dirs):
         name_subdir = i[0].split(dirs)[-1].split("\\")
