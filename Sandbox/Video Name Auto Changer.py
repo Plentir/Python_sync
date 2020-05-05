@@ -84,8 +84,8 @@ class AutoChanger():
             
 
 if __name__ == "__main__":
-    test = AutoChanger("D:\\Media\\영상\\Movies\\애니메이션\\카게구루이")
+    test = AutoChanger("D:\\Media\\영상\\Movies\\애니메이션\\카게구루이 XX")
     
-    test.setRules()
+    test.setRules(title="Kagegurui XX")
     test.getFiles()
     test.changeName()
