@@ -2,8 +2,12 @@ import os
 
 class AutoChanger():
 
-    def __init__(self, dir):
-        self.__dir = dir
+    def __init__(self, dir="none"):
+        if dir == "none":
+            self.__dir = input("디렉터리 경로를 입력하세요.\n입력: ")
+            
+        else:
+            self.__dir = dir
 
         self.__file_names = os.listdir(self.__dir)
         self.__file_formats = [f[-3:] for f in self.__file_names]
@@ -13,15 +17,15 @@ class AutoChanger():
 
     def getRules(self):
         if self.__sep == " ":
-            print("Naming rules updated!\n >Directory: %s\n >Title: %s\n >Year: %s\n >Separator: %s" \
+            print(" >Directory: %s\n >Title: %s\n >Year: %s\n >Separator: %s" \
                 %(self.__dir, self.__title, self.__year, "Blank"))
 
         elif self.__sep == "\t":
-            print("Naming rules updated!\n >Directory: %s\n >Title: %s\n >Year: %s\n >Separator: %s" \
+            print(" >Directory: %s\n >Title: %s\n >Year: %s\n >Separator: %s" \
                 %(self.__dir, self.__title, self.__year, "Tab"))
 
         else:
-            print("Naming rules updated!\n >Directory: %s\n >Title: %s\n >Year: %s\n >Separator: %s" \
+            print(" >Directory: %s\n >Title: %s\n >Year: %s\n >Separator: %s" \
                 %(self.__dir, self.__title, self.__year, self.__sep))
 
         return
@@ -37,6 +41,7 @@ class AutoChanger():
         self.__year = year
         self.__sep = sep
 
+        print("Rules updated:")
         self.getRules()
 
         return
@@ -63,6 +68,7 @@ class AutoChanger():
 
     
     def changeName(self):
+        print("Current rules are...")
         self.getRules()
         flag = input("계속 진행할까요? [y, n]\n입력: ")
 
@@ -92,7 +98,7 @@ class AutoChanger():
             
 
 if __name__ == "__main__":
-    test = AutoChanger("D:\\Media\\영상\\Movies\\애니메이션\\Pop Team Epic")
+    test = AutoChanger()
     
     test.setRules()
     print()
