@@ -60,7 +60,7 @@ class AutoChanger():
             file_no += 1
         
         return
-        
+
     
     def changeName(self):
         self.getRules()
@@ -72,11 +72,19 @@ class AutoChanger():
 
         elif flag in ("y", "Y", "yes", "Yes", "YES"):
             os.chdir(self.__dir)
-            file_no = 0
+            
+            # generate counter
+            f_types = list(set(self.__file_formats))
+            count = dict()
 
+            for t in f_types:
+                count[t] = 0
+
+            # change file name
             for name in self.__file_names:
-                os.rename(name, "%s - %02d.%s" %(self.__title, (file_no + 1), self.__file_formats[file_no]))
-                file_no += 1
+                ft = name[-3:]
+                os.rename(name, "%s - %02d.%s" %(self.__title, (count[ft] + 1), ft))
+                count[ft] += 1
 
         print("완료됨.")
 
@@ -84,8 +92,10 @@ class AutoChanger():
             
 
 if __name__ == "__main__":
-    test = AutoChanger("D:\\Media\\영상\\Movies\\애니메이션\\카게구루이 XX")
+    test = AutoChanger("D:\\Media\\영상\\Movies\\애니메이션\\Pop Team Epic")
     
-    test.setRules(title="Kagegurui XX")
+    test.setRules()
+    print()
     test.getFiles()
+    print()
     test.changeName()
