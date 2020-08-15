@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "BigData_DC"
+		},
+		{
+			"path": "R_Sandboxes"
+		},
+		{
+			"name": "Python_sync",
+			"path": "Python_sync"
+		},
+		{
+			"name": "Python_Muscle-camp",
+			"path": "Python_Muscle-camp"
+		}
+	],
+	"settings": {
+		"python.pythonPath": "C:\\Users\\plent\\miniconda3\\python.exe"
+	}
+}
