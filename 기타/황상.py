@@ -1,4 +1,12 @@
-snum = input("input: ")
+flag = 1
+while flag == 1:
+    snum = input("input: ")
+    if (len(snum) % 2) != 0:
+        flag = 1
+        print("입력값의 길이가 짝수가 아닙니다.")
+
+    else:
+        flag = 0
 
 mid = len(snum)//2
 left_snum = snum[:mid]
